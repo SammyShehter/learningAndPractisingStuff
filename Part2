@@ -88,13 +88,13 @@
 $("body").append('<center><h1 id="48" style="display:flex; position:absolute;">Moving obj</h1></center>');
 
   $("#yallaLeft").click(function () {
-    $("#48").animate({ left: "+=100px" }, 1000);
+    $("#48").animate({ left: "-=100px" }, 1000);
   });
   $("#yallaDown").click(function () {
     $("#48").animate({ top: "+=100px" }, 1000);
   });
   $("#yallaRight").click(function () {
-    $("#48").animate({ left: "-=100px" }, 1000);
+    $("#48").animate({ left: "+=100px" }, 1000);
   });
   $("#yallaUp").click(function () {
     $("#48").animate({ top: "-=100px" }, 1000);
