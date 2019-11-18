@@ -8,7 +8,7 @@
 <body>
   <canvas id="canvas" width="1920" height="1080"></canvas>
   <script>
-  
+
   var canvas = document.getElementById("canvas");
   var ctx = canvas.getContext("2d");
   ctx.lineWidth = 4;
@@ -27,7 +27,7 @@
   ctx.fillRect(15,45,40,35);
   ctx.fillRect(15,80,3,15);
   ctx.fillRect(52,80,3,15);
-  
+
 
 //Pink Rect
   ctx.strokeStyle = "DeepPink";
@@ -63,36 +63,36 @@
 // Round Shapes
   ctx.lineWidth = 4;
   ctx.strokeStyle = "Green";
-  
+
   ctx.beginPath();
   ctx.arc(50,50,20,0, Math.PI / 2, false);
   ctx.stroke();
-  
+
   ctx.beginPath();
   ctx.arc(100,50,20,0, Math.PI , false);
   ctx.stroke();
-  
+
   ctx.beginPath();
   ctx.arc(150,50,20,0, Math.PI*1.5 ,false);
   ctx.stroke();
-  
+
   ctx.beginPath();
   ctx.arc(200,50,20,0, Math.PI * 2 , false);
   ctx.stroke();
 
 
-// Funny Circle Generator  
+// Funny Circle Generator
   var circle = function(x,y,radius){
     ctx.beginPath();
     ctx.arc(x,y,radius,0,Math.PI*2,false);
     ctx.stroke();
   }
-  
+
     var i = 1;
     var j = 0;
     var t = 0;
 
-  
+
     var colors = [
       "red",
       "orange",
@@ -102,7 +102,7 @@
       "deepblue",
       "purple"
     ]
-  
+
   cicleAnimation = function(){
     ctx.strokeStyle = colors[j];
     circle(960,540,i*4);
@@ -166,7 +166,7 @@ var drawPoints = function(array){
   }
 
 
-// Funny Circle Generator with mouse move upgrade 
+// Funny Circle Generator with mouse move upgrade
 $("html").mousemove(function(event){
   ctx.strokeStyle = colors[j];
   circle(960,540,i*4);
@@ -183,12 +183,12 @@ var circle = function(x,y,radius){
     ctx.arc(x,y,radius,0,Math.PI*2,false);
     ctx.stroke();
   }
-  
+
     var i = 1;
     var j = 0;
     var t = 0;
 
-  
+
     var colors = [
       "red",
       "orange",
@@ -197,7 +197,7 @@ var circle = function(x,y,radius){
       "blue",
       "deepblue",
       "purple"
-    ]
+    ];
   */
   </script>
 </body>
