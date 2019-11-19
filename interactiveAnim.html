@@ -6,10 +6,104 @@
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 </head>
 <body>
+    <canvas id="canvas" width="200" height="200"></canvas>
 <script>
+var canvas = document.getElementById("canvas");
+var ctx = canvas.getContext("2d");
+var width = canvas.width;
+var height = canvas.height;
+
+var circle = function(a,b,radius,fillCircle){
+  ctx.beginPath();
+  ctx.arc(a,b,radius,0,Math.PI * 2,false)
+  if(fillCircle){
+    ctx.fill();
+  }else{
+    ctx.stroke();
+  }
+}
+
+var Ball = function(){
+    this.x = width / 2;
+    this.y = height / 2;
+    this.xSpeed = 5;
+    this.ySpeed = 0;
+    this.speed = 5
+};
+
+Ball.prototype.move = function(){
+  this.x += this.xSpeed;
+  this.y += this.ySpeed;
+/*
+// No collision
+  if(this.x < 0){
+    this.x = width;
+  }else if(this.x > width){
+    this.x = 0;
+  }
+  if(this.y < 0){
+    this.y = height;
+  }else if(this.y > height){
+    this.y = 0;
+  }
+}
+*/
+
+// Collision
+  if(this.x < 0 || this.x > width){
+   this.xSpeed = -this.xSpeed;
+  }
+  if(this.y < 0 || this.y > height){
+   this.ySpeed = -this.ySpeed;
+  }
+}
+
+Ball.prototype.draw = function(){
+  circle(this.x, this.y, 10, true)
+}
+
+Ball.prototype.setDirection = function(direction){
+  if(direction === "up"){
+    this.xSpeed = 0;
+    this.ySpeed = -5;
+  }else if(direction === "down"){
+    this.xSpeed = 0;
+    this.ySpeed = 5;
+  }else if(direction === "left"){
+    this.xSpeed = -5;
+    this.ySpeed = 0;
+  }else if(direction === "right"){
+    this.xSpeed = 5;
+    this.ySpeed = 0;
+  }else if(direction === "stop"){
+    this.xSpeed = 0;
+    this.ySpeed = 0;
+  }
+}
+
+var ball = new Ball();
+
+var keyNames = {
+    32: "stop",
+    37: "left",
+    38: "up",
+    39: "right",
+    40: "down"
+    //13: "Enter",
+    //16: "Shift"
+  }
+
   $("body").keydown(function(event){
-    console.log(event.keyCode);
-  })
+    var direction = keyNames[event.keyCode];
+    ball.setDirection(direction);
+  });
+
+  setInterval(function(){
+    ctx.clearRect(0,0,width,height);
+    ball.draw();
+    ball.move();
+    ctx.strokeRect(0,0,width,height);
+  },30);
 </script>
 
 </body>

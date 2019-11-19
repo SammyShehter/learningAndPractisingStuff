@@ -21,7 +21,6 @@ var circle = function(a,b,radius,fillCircle){
   }else{
     ctx.stroke();
   }
-  ctx.fillStyle = colors[Math.floor(Math.random() * 6)];
 }
 width = canvas.width;
 height = canvas.height;
@@ -97,7 +96,10 @@ setInterval(function(){
 var ball = [];
 
 var randNum = function(){
-    return Math.floor(Math.random() * 10 - 5);
+    return Math.random() * 10 - 5;
+}
+var randNumBig = function(){
+    return Math.random() * 400;
 }
 
 var colors = ["Red","Orange","Yellow","Green","Blue","Purple"];
@@ -106,8 +108,8 @@ var pickRandColor = function (colors) {
 };
 
 var Ball = function(){
-    this.x = 100;
-    this.y = 100;
+    this.x = 7; // or randNumBig();
+    this.y = 7; // or randNumBig();
     this.xSpeed = randNum();
     this.ySpeed = randNum();
     this.color = pickRandColor(colors);
