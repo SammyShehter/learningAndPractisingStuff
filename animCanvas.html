@@ -9,8 +9,6 @@
   <canvas id="canvas" width="400" height="400"></canvas>
   <script>
 
-var x = 0;
-var ball = [];
 
 var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
@@ -23,6 +21,7 @@ var circle = function(a,b,radius,fillCircle){
   }else{
     ctx.stroke();
   }
+  ctx.fillStyle = colors[Math.floor(Math.random() * 6)];
 }
 width = canvas.width;
 height = canvas.height;
@@ -95,24 +94,27 @@ setInterval(function(){
 
 //Bouncing ball
 
+var ball = [];
+
 var randNum = function(){
     return Math.floor(Math.random() * 10 - 5);
 }
 
-var colorPick = function(){
-  var colors = ["Red","Orange","Yellow","Green","Blue","Purple"];
-  return ctx.fillStyle = colors[Math.floor(Math.random() * 6)];
-}
+var colors = ["Red","Orange","Yellow","Green","Blue","Purple"];
+var pickRandColor = function (colors) {
+  return colors[Math.floor(Math.random() * colors.length)];
+};
 
 var Ball = function(){
-    this.fillStyle = colorPick();
     this.x = 100;
     this.y = 100;
     this.xSpeed = randNum();
     this.ySpeed = randNum();
+    this.color = pickRandColor(colors);
 };
 
 Ball.prototype.draw = function(){
+    ctx.fillStyle = this.color;
     circle(this.x,this.y,6,true);
 };
 
