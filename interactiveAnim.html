@@ -29,17 +29,13 @@ var Ball = function(){
     this.speed = 1;
     this.xSpeed = 1;
     this.ySpeed = 0;
-    this.shape = 5;
-    this.accel = 1;
+
 };
 
 
 
 
 Ball.prototype.move = function(){
-
-  this.speed = this.accel; // Turn off this rule if you want to play with gears
-
   this.x += this.xSpeed * this.speed;
   this.y += this.ySpeed * this.speed;
 
@@ -68,7 +64,7 @@ Ball.prototype.move = function(){
 
 */
 Ball.prototype.draw = function(){
-  circle(this.x, this.y, this.shape, true)
+  circle(this.x, this.y, 10, true)
 }
 
 Ball.prototype.setDirection = function(direction){
@@ -113,51 +109,19 @@ var speeds = {
   104: 8,
   105: 9
 }
-
 Ball.prototype.setGear = function(gear){
   if(gear !== undefined){
-    this.speed = gear;
+    this.speed = gear
   }
 } 
-
-//Shapes
-var shapes = {
-  67: "c",
-  86: "v"
-}
-
-Ball.prototype.setShape = function(shape){
-  if(shape === "c"){
-    this.shape--;
-  }else if(shape === "v"){
-    this.shape++;
-  }
-}
-
-//Acceleration
-var accels = {
-  90: "z",
-  88: "x"
-}
-
-Ball.prototype.setAccel = function(accel){
-  if(accel === "z"){
-    this.accel--;
-  }else if(accel === "x"){
-    this.accel++;
-  }
-}
  
 
   $("body").keydown(function(event){
     var direction = keyNames[event.keyCode];
     var gear = speeds[event.keyCode];
-    var shape = shapes[event.keyCode];
-    var accel = accels[event.keyCode];
-    ball.setDirection(direction);
     ball.setGear(gear);
-    ball.setShape(shape);
-    ball.setAccel(accel);
+    ball.setDirection(direction);
+    ball.speedFunc(direction);
   });
 
   setInterval(function(){
