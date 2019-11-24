@@ -13,16 +13,9 @@
     </center>
 <script>
 
-  var keyNames = {
-    32: "Space",
-    37: "Left",
-    38: "Up",
-    39: "Right",
-    40: "Down"
-  }
 
   $("#translit").keydown(function(event){
-    document.write.keyNames[event.keyCode];
+    console.log(event.keyCode);
   })
 </script>
 
