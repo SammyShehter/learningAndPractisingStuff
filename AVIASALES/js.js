@@ -28,7 +28,7 @@ const showCity = (input, list) => {
 
 }
 
-//типизировал функцию по шаблону Макса
+//типизировал функцию по шаблону Макса 
 const addCity = (event, item, list) => {
     const target = event.target;
     if(target.tagName.toLowerCase() === 'li'){
