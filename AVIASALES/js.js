@@ -1,4 +1,4 @@
-/////////////////////////////////////////////////////
+// Элементы на странице
 const formSearch = document.querySelector(".form-search") ,
     inputCitiesFrom = formSearch.querySelector(".input__cities-from") ,
     dropdownCitiesFrom = formSearch.querySelector(".dropdown__cities-from") ,
@@ -68,7 +68,7 @@ const addCity = (event, item, list) => {
     }
 }
 
-///////////////////////////////////////////////////////////
+//Обработчики событий
 
 inputCitiesFrom.addEventListener('input', () => {
     showCity(inputCitiesFrom, dropdownCitiesFrom);
@@ -88,6 +88,26 @@ dropdownCitiesTo.addEventListener("click", (event) => {
     addCity(event, inputCitiesTo, dropdownCitiesTo);
 });
 
+formSearch.addEventListener('submit', (event) => {
+    event.preventDefault();
+    
+    const cityFrom = city.find((item) => inputCitiesFrom.value === item.name);
+    const cityTo = city.find((item) => inputCitiesTo.value === item.name)
+
+    const formData = {
+        from: cityFrom.code,
+        to: cityTo.code,
+        when: inputDataDepart.value,
+    };
+    const requestData =  '?depart_date=' + formData.when + 
+        '&origin=' + formData.from +
+        '&destination' + formData.to +
+        '&one_way=true&token=' + API_KEY;
+
+        console.log(requestData);
+        
+});
+
 
 ///////////////////////////////////////////////////////////////////
 
@@ -95,3 +115,4 @@ dropdownCitiesTo.addEventListener("click", (event) => {
 getData(citiesApi, (data) => {
     city = JSON.parse(data).filter(item => item.name);
 });
+
