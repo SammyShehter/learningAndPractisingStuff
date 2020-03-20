@@ -6,4 +6,4 @@
 					for c in list(range(10)):
 						for b in list(range(10)):
 							for a in list(range(10)):
-								print ("05"+str(a)+str(b)+str(c)+str(d)+str(e)+str(f)+str(g)+str(h))
+								print ("05"+str(a)+str(b)+str(c)+str(d)+str(e)+str(f)+str(g)+str(h)) 
