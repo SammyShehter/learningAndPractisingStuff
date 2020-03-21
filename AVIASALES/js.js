@@ -10,10 +10,14 @@ let city = [];
 
 
 const citiesApi = 'dataBase/cities.json',
+    //citiesApi = 'http://api.travelpayouts.com/data/ru/cities.json',
     proxy = 'https://cors-anywhere.herokuapp.com/',
     API_KEY = '4c5b03533ae89342a8094e935e66608a',
     CALENDAR = 'http://min-prices.aviasales.ru/calendar_preload';
-/////////////////////////////////////////////////////////////
+
+
+// Функции
+
 const getData = (url, callback) => {
     const request = new XMLHttpRequest();
 
@@ -30,7 +34,7 @@ const getData = (url, callback) => {
     })
 
     request.send();
-}
+};
 
 
 const showCity = (input, list) => {
@@ -50,9 +54,31 @@ const showCity = (input, list) => {
         list.append(li);
     });
 
-}
+};
+
+const renderCheapDay = (cheapTicket) => {
+    console.log(cheapTicket);
+};
+
+
+const renderCheapYear = (cheapTickets) => {
+    console.log(cheapTickets);
+};
+
+
+const renderCheap = (data, date) => {
+    const cheapTicketYear = JSON.parse(data).best_prices;
+    
+    const cheapTicketDay = cheapTicketYear.filter((item) => {
+        return item.depart_date === date;
+    });
+    
+    renderCheapDay(cheapTicketDay);
+    renderCheapYear(cheapTicketYear);
+};
 
 //типизировал функцию по шаблону Макса 
+
 const addCity = (event, item, list) => {
     const target = event.target;
     if(target.tagName.toLowerCase() === 'li'){
@@ -66,7 +92,9 @@ const addCity = (event, item, list) => {
         //     }
         // }
     }
-}
+};
+
+
 
 //Обработчики событий
 
@@ -99,12 +127,13 @@ formSearch.addEventListener('submit', (event) => {
         to: cityTo.code,
         when: inputDataDepart.value,
     };
-    const requestData =  '?depart_date=' + formData.when + 
-        '&origin=' + formData.from +
-        '&destination' + formData.to +
-        '&one_way=true&token=' + API_KEY;
+    const requestData =  `?depart_date=${formData.when}&origin=${formData.from}&destination=${formData.to}&one_way=true`;
 
-        console.log(requestData);
+    
+
+        getData(CALENDAR + requestData, (response) => {
+            renderCheap(response, formData.when);
+        });
         
 });
 
@@ -114,5 +143,6 @@ formSearch.addEventListener('submit', (event) => {
 
 getData(citiesApi, (data) => {
     city = JSON.parse(data).filter(item => item.name);
+    console.log(city);
 });
 
