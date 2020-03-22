@@ -62,6 +62,15 @@ const renderCheapDay = (cheapTicket) => {
 
 
 const renderCheapYear = (cheapTickets) => {
+    cheapTickets.sort( (a,b) => {
+        if(a.value > b.value){
+            return 1;
+        }
+        if(a.value < b.value){
+            return -1;
+        }
+        return 0;
+    });
     console.log(cheapTickets);
 };
 
@@ -127,7 +136,7 @@ formSearch.addEventListener('submit', (event) => {
         to: cityTo.code,
         when: inputDataDepart.value,
     };
-    const requestData =  `?depart_date=${formData.when}&origin=${formData.from}&destination=${formData.to}&one_way=true`;
+    const requestData = `?depart_date=${formData.when}&origin=${formData.from}&destination=${formData.to}&one_way=true`;
 
     
 
