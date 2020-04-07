@@ -1,23 +1,179 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Translit</title>
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <style>
+    .title{
+      display: flex;
+      height: 90px;
+      justify-content: center;
+      align-items: center;
+      background: lightgoldenrodyellow;
+    }
+    .textarea-wrapper{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 30px;
+    }
+    textarea{
+      height: 20rem;
+      width: 90%;
+    }
+  </style>
 </head>
 <body>
-    <center>
-    <textarea id="translit" rows="10" cols="50">
-
-    </textarea>
-    </center>
+  <div class="title">
+    <h1>Translit</h1>    
+  </div>
+  <div class="textarea-wrapper">
+    <textarea id="translit"></textarea>
+  </div>
+  
 <script>
+  window.addEventListener("DOMContentLoaded", () => {
+    let text = document.getElementById("translit");
+    text.addEventListener('keydown', (event) => {
+
+      event.preventDefault();
+
+      let key = event.key;
+
+      console.log(event);
+      // console.log(text.textContent[text.textContent.]);
+    
+      // ENGLISH - RUSSIAN TRANSLIT
+
+      // if(event.shiftKey){
+
+      // }
+      switch (key) {
+        // case "Backspace":
+          // что делать с псевдомассивом?
+          // как удалить последний символ?
+          // let str = text.textContent
+          // str = str.substring(0, str.length - 1);
+          // break;
+
+        case "a": 
+          text.textContent += "а";
+          break;
+
+        case "b": 
+          text.textContent += "б";
+          break;
+
+        case "c": 
+          text.textContent += "ц";
+          break;
+
+        case "d": 
+          text.textContent += "д";
+          break;
+        
+        case "e": 
+          text.textContent += "е";
+          break;
+
+        case "f": 
+          text.textContent += "ф";
+          break;
+        
+        case "g": 
+          text.textContent += "г";
+          break;
+
+        case "h": 
+          text.textContent += "х";
+          break;
+        
+        case "i": 
+          text.textContent += "и";
+          break;
+
+        case "j": 
+          text.textContent += "ж";
+          break;
+        
+        case "k": 
+          text.textContent += "к";
+          break;
+
+        case "l": 
+          text.textContent += "л";
+          break;
+
+        case "m": 
+          text.textContent += "м";
+          break;
+
+        case "n": 
+          text.textContent += "н";
+          break;
+        
+        case "o": 
+          text.textContent += "о";
+          break;
+
+        case "p": 
+          text.textContent += "п";
+          break;
+        
+        case "q": 
+          text.textContent += " ";
+          break;
+
+        case "r": 
+          text.textContent += "р";
+          break;
+        
+        case "s": 
+          text.textContent += "с";
+          break;
+
+        case "t": 
+          text.textContent += "т";
+          break;
+        
+        case "u": 
+          text.textContent += "у";
+          break;
+
+        case "v": 
+          text.textContent += "в";
+          break;
+
+        case "w": 
+          text.textContent += " ";
+          break;
+
+        case "x": 
+          text.textContent += " ";
+          break;
+        
+        case "y": 
+          text.textContent += "й";
+          break;
+
+        case "z": 
+          text.textContent += "з";
+          break;
+
+        case "'": 
+          text.textContent += "ь";
+          break;
+        
+        case " ": 
+          text.textContent += " ";
+          break;
+        
+      }
+    });
+  });
 
 
-  $("#translit").keydown(function(event){
-    console.log(event.keyCode);
-  })
-</script>
-
+</script>  
 </body>
 </html>
