@@ -33,7 +33,6 @@
   </div>
   
 <script>
-  window.addEventListener("DOMContentLoaded", () => {
     let text = document.getElementById("translit");
     text.addEventListener('keydown', (event) => {
 
@@ -42,20 +41,16 @@
       let key = event.key;
 
       console.log(event);
-      // console.log(text.textContent[text.textContent.]);
     
       // ENGLISH - RUSSIAN TRANSLIT
 
-      // if(event.shiftKey){
 
-      // }
       switch (key) {
-        // case "Backspace":
-          // что делать с псевдомассивом?
-          // как удалить последний символ?
-          // let str = text.textContent
-          // str = str.substring(0, str.length - 1);
-          // break;
+        case "Backspace":
+          let str = text.textContent
+          str = str.substring(0, str.length - 1);
+          text.textContent = str;
+          break;
 
         case "a": 
           text.textContent += "а";
@@ -146,7 +141,7 @@
           break;
 
         case "w": 
-          text.textContent += " ";
+          text.textContent += "ш";
           break;
 
         case "x": 
@@ -171,7 +166,6 @@
         
       }
     });
-  });
 
 
 </script>  
