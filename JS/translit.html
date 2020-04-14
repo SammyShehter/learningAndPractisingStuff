@@ -5,10 +5,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Translit</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/0.6.0/modern-normalize.min.css" type="text/css">
   <style>
     .title {
       display: flex;
-      height: 90px;
       justify-content: center;
       align-items: center;
       background: lightgoldenrodyellow;
@@ -25,6 +25,20 @@
       height: 20rem;
       width: 90%;
     }
+
+    .FAQ {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .FAQ-text{
+      width: 90%;
+    }
+
+    li+li {
+      margin-top: 10px;
+    } 
   </style>
 </head>
 
@@ -35,38 +49,116 @@
   <div class="textarea-wrapper">
     <textarea id="translit"></textarea>
   </div>
+  <div class="FAQ">
+    <div class="FAQ-text">
+      <h3>
+        Практически все буквы подобраны идеально и будут найдены интуитивно.
+        Есть лишь некоторые моменты которые стоит изучить перед непосредственного использования данного транслитератора
+      </h3>
+      <ul>
+        <li>
+          Твердый знак привязан к букве "q". Буква "щ" стоит за "w".
+        </li>
+        <li>
+          <u>Составные буквы</u> типа "ч" или  "ё", появляются при последовательном печатании "ch" и "jo" соответсвенно. Однако что действительно интересно, так это:
+        </li>
+        <li>
+          <u>НЕ составные комбинации букв.</u><br>Слова типа "Район" или "Сходка" должны набираться через дефис. Например "Raj-on" и "S-hodka" соответсвенно. Исключение составляет только комбинация "sx" которая вернет "сх".
+        </li>
+      </ul>
+      <h2>
+        Приятного пользования =)
+      </h2>
+    </div>
+  </div>
 
   <script>
-    var latSimple = [
-      'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q','r', 's', 't','u', 'v', 'w', 'x', 'y', 'z', "'"
+    const latSimple = [
+      'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q','r', 's', 't','u', 'v', 'w', 'x', 'y', 'z', "'",
+      'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q','R', 'S', 'T','U', 'V', 'W', 'X', 'Y', 'Z', '"'
     ];
-    var kirSimple = [
-      'а', 'б', 'с', 'д', 'е', 'ф', 'г', 'х', 'и', 'й', 'к', 'л', 'м', 'н', 'о', 'п', 'г','р', 'с', 'т','у', 'в', 'ш', 'х', 'ы', 'з', 'ь'
+    const kirSimple = [
+      'а', 'б', 'ц', 'д', 'е', 'ф', 'г', 'х', 'и', 'й', 'к', 'л', 'м', 'н', 'о', 'п', 'ъ','р', 'с', 'т','у', 'в', 'щ', 'х', 'ы', 'з', 'ь',
+      'А', 'Б', 'Ц', 'Д', 'Е', 'Ф', 'Г', 'Х', 'И', 'Й', 'К', 'Л', 'М', 'Н', 'О', 'П', 'Ъ','Р', 'С', 'Т','У', 'В', 'Щ', 'Х', 'Ы', 'З', 'Ь'
     ];
-    var latSpec = ['ыo','зh','сh','ыe','аj','ыa','йa','ыu','йu'];
-    var kirSpec = ['ё','ж','ч','э','й','я','я','ю','ю'];
+    const latSpec = [
+      'сh','ыo','зh','цh','ыe','йe','ыa','йa','ыu','йu','йo',
+      'Сh','Ыo','Зh','Цh','Ыe','Йe','Ыa','Йa','Ыu','Йu','Йo',
+      'СH','ЫO','ЗH','ЦH','ЫE','ЙE','ЫA','ЙA','ЫU','ЙU','ЙO'
+    ];
+    const kirSpec = [
+      'ш','ё','ж','ч','э','э','я','я','ю','ю','ё',
+      'Ш','Ё','Ж','Ч','Э','Э','Я','Я','Ю','Ю','Ё',
+      'Ш','Ё','Ж','Ч','Э','Э','Я','Я','Ю','Ю','Ё'
+    ];
+    const latSuperSpec = [
+      'с-h','ы-o','з-h','ц-h','ы-e','й-e','ы-a','й-a','ы-u','й-u','й-o',
+      'С-h','Ы-o','З-h','Ц-h','Ы-e','Й-e','Ы-a','Й-a','Ы-u','Й-u','Й-o',
+      'С-H','Ы-O','З-H','Ц-H','Ы-E','Й-E','Ы-A','Й-A','Ы-U','Й-U','Й-O',
+      'С_h','Ы_o','З_h','Ц_h','Ы_e','Й_e','Ы_a','Й_a','Ы_u','Й_u','Й_o',
+      'С_H','Ы_O','З_H','Ц_H','Ы_E','Й_E','Ы_A','Й_A','Ы_U','Й_U','Й_O'
+    ];
+    const kirSuperSpec = [
+      'сх','ыо','зх','цх','ые','йе','ыа','йа','ыу','йу','йо',
+      'Сх','Ыо','Зх','Цх','Ые','Йе','Ыа','Йа','Ыу','Йу','Йо',
+      'СХ','ЫО','ЗХ','ЦХ','ЫЕ','ЙЕ','ЫА','ЙА','ЫУ','ЙУ','ЙО',
+      'Сх','Ыо','Зх','Цх','Ые','Йе','Ыа','Йа','Ыу','Йу','Йо',
+      'СХ','ЫО','ЗХ','ЦХ','ЫЕ','ЙЕ','ЫА','ЙА','ЫУ','ЙУ','ЙО'
+    ];
 
-    let text = document.getElementById("translit");
-    text.addEventListener('input', (event) => {
+    /* 
+    Определившись с массивами, переходим к самому интересному.
+    Тут лишь важно отметить, что каждый ключ "kir*" и "lat*"
+    массивов взаимосвязан и ведет к ожидаемой транслитерируемой букве.
+    T.е. если latSimple[1] = "b", значит kirSimple[1] = "б" и т.д.
+    Этот порядок очень важно сохранять
+    */
 
-      let key = event.data;
-      let specCaseUsed = false;
+    let text = document.getElementById("translit"); //Ловим Текстовое поле
+    text.addEventListener('input', (event) => {    // Начинаем его слушать
 
+      let key = event.data,   //Определяем нажатую букву
+        specCaseUsed = false,   //Задаем значение "ложь" для случаев составных букв типа "Ш" или "Ч" 
+        superSpecCaseUsed = false;    //Задаем значение "ложь" для случаев обратных составным буквам типа "СХ" или "ЦХ" которые иначе привели бы к составным буквам 
 
       let specCase = text.value;
-      specCase = specCase.substring(specCase.length, specCase.length - 2);
-      
-      for(let i = 0; i < latSpec.length; i++){
-        if(specCase == latSpec[i]){
-          let str = text.value;
-          str = str.substring(0, str.length - 2);
-          text.value = str;
-          text.value += kirSpec[i];
-          specCaseUsed = true;
+      specCase = specCase.substring(specCase.length, specCase.length - 2);   //specCase получает значение последних двух букв из текстового поля
+
+      let superSpecCase = text.value;
+      superSpecCase = superSpecCase.substring(superSpecCase.length, superSpecCase.length - 3);   //superSpecCase получает значение последних трех букв из текстового поля
+
+     /*
+      Сейчас запустится цикл проверки и подставления необходимого значения,
+      иными словами - магия транслитерации.
+      Я подробно опишу первый цикл, остальные работают примерно также,
+      лишь с небольшими изминениями.
+     */
+
+      for(let i = 0; i < latSuperSpec.length; i++ ){   //Запускается цикл по массиву latSuperSpec. Он первый потому что важно проверить если пользователь хочет ввести НЕ составные буквы
+        if(superSpecCase === latSuperSpec[i]){    // Если последнии 3 символа введенные в текстовое поле соответсвуют строке из массива, то это наш случай. Начинаем обработку
+          let str = text.value;     //Копируем весь текст из текстового поля в переменную str. Это делается для избегания конфликтовв
+            str = str.substring(0, str.length - 3);     //Стираем последнии три символа из нашей строки
+            text.value = str;     //Присваеваем значение нашей строки к текстовому полю. Другими словами - в текстовом поле стерты последнии три символа
+            text.value += kirSuperSpec[i];    //Добавляем в текстовое поле нужную букву. Готово :)
+            superSpecCaseUsed = true;     //Отмечаем что необходимая буква найдена а значит последующие циклы будут сброшены.
         }
       }
 
-      if(!specCaseUsed){
+      //Но что если необходимая буква не найдена в предыдущем цикле?
+
+      if(!superSpecCaseUsed){     //Не проблема! Запускается цикл поиска по составным буквам по той же логике и т.д. до необходимой буквы.
+        for(let i = 0; i < latSpec.length; i++){
+          if(specCase === latSpec[i]){
+            let str = text.value;
+            str = str.substring(0, str.length - 2);
+            text.value = str;
+            text.value += kirSpec[i];
+            specCaseUsed = true;
+          }
+        }
+      }
+
+      if(!specCaseUsed && !superSpecCaseUsed){
         for (let j = 0; j < latSimple.length; j++) {
           if (key === latSimple[j]) {
             event.preventDefault();
@@ -77,8 +169,6 @@
           }
         }
       }
-      
-      
 
     });
   </script>
