@@ -114,12 +114,12 @@
     Этот порядок очень важно сохранять
     */
 
-    let text = document.getElementById("translit"); //Ловим Текстовое поле
+    const text = document.getElementById("translit"); //Ловим Текстовое поле
     text.addEventListener('input', (event) => {    // Начинаем его слушать
 
-      let key = event.data,   //Определяем нажатую букву
-        specCaseUsed = false,   //Задаем значение "ложь" для случаев составных букв типа "Ш" или "Ч" 
-        superSpecCaseUsed = false;    //Задаем значение "ложь" для случаев обратных составным буквам типа "СХ" или "ЦХ" которые иначе привели бы к составным буквам 
+      const key = event.data;   //Определяем нажатую букву
+      let specCaseUsed = false;   //Задаем значение "ложь" для случаев составных букв типа "Ш" или "Ч" 
+      let superSpecCaseUsed = false;    //Задаем значение "ложь" для случаев обратных составным буквам типа "СХ" или "ЦХ" которые иначе привели бы к составным буквам 
 
       let specCase = text.value;
       specCase = specCase.substring(specCase.length, specCase.length - 2);   //specCase получает значение последних двух букв из текстового поля
@@ -161,7 +161,7 @@
       if(!specCaseUsed && !superSpecCaseUsed){
         for (let j = 0; j < latSimple.length; j++) {
           if (key === latSimple[j]) {
-            event.preventDefault();
+            // event.preventDefault();
             let str = text.value;
             str = str.substring(0, str.length - 1);
             text.value = str;
