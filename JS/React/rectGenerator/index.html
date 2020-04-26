@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctipe</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class='wrapper'>
+        <h1>Rectangle Generator</h1>
+        <div class="wrapper_rectSpecs">
+            <div class="wrapper_rectSpecs__inputs">
+                <label for="height">Please enter here desired height:</label>
+                <input name="height" id="rectHeight" type="number" value="50">
+                <label for="width">Please enter here desired width:</label>
+                <input name="width" id="rectWidth" type="number" value="50">
+                <label for="colors">Please select desired color:</label>
+                <select name="colors" id="colors">
+                    <!-- <option value="red">red</option>
+                    <option value="blue">blue</option>
+                    <option value="black">black</option>
+                    <option value="purple">purple</option>
+                    <option value="orange">orange</option>
+                    <option value="burlywood">burlywood</option>
+                    <option value="chartreuse">chartreuse</option>
+                    <option value="darkgreen">darkgreen</option>
+                    <option value="gold">gold</option>
+                    <option value="gray">gray</option>
+                    <option value="yellow">yellow</option>
+                    <option value="maroon">maroon</option>
+                    <option value="yellowgreen">yellowgreen</option> -->
+                </select>
+            </div>
+            <div>
+                <button id="rectCreator" class='rectangle'>Create a rectangle</button>
+            </div>
+        </div>
+        <br>
+        <h2>or</h2>
+        <br>
+        <button id="rectRandCreator" class='rectangle'>Create a random rectangle</button>
+    </div>
+    <div class="rectPool">
+
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
