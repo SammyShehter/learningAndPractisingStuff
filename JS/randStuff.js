@@ -1,16 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-
-<body>
-    <script>
-
-        //Random Color Generator
+//Random Color Generator
 
 //Random Color Generator - Your method
 function randomColor() {
@@ -26,11 +14,3 @@ function randomColor() {
 function getRandomColor() {
     return '#' + Math.floor(Math.random() * 2 ** 24).toString(16).padStart(0, 6);
 }
-
-
-
-
-    </script>
-</body>
-
-</html>
