@@ -32,62 +32,66 @@ const kirSuperSpec = [
 ];
 
 
-String.prototype.replaceAt = function (index, char) {
-  return this.substr(0, index) + char + this.substr(index + char.length);
+String.prototype.simpleReplace = function (index, char) {
+  return this.substring(0, index) + char + this.substring(index + char.length);
+}
+String.prototype.specialReplace = function (index, char) {
+  return this.substring(0, index) + char + this.substring(index + char.length + 1);
+}
+String.prototype.superSpecialReplace = function (index, char) {
+  return this.substring(0, index) + char + this.substring(index + char.length + 1);
 }
 
 
-const text = document.getElementById("translit");
-text.addEventListener('input', (event) => {
+const textEl = document.getElementById("translit");
+textEl.addEventListener('input', (event) => {
 
   const key = event.data;
   let specCaseUsed = false;
   let superSpecCaseUsed = false;
-  let position = text.selectionStart;
+  let position = textEl.selectionStart;
 
-  let specCase = text.value;
+  let specCase = textEl.value;
   specCase = specCase.substring(position, position - 2);
 
-  let superSpecCase = text.value;
+  let superSpecCase = textEl.value;
   superSpecCase = superSpecCase.substring(position, position - 3);
 
 
 
-  //  for(let i = 0; i < latSuperSpec.length; i++ ){
-  //    if(superSpecCase === latSuperSpec[i]){
+  for (let i = 0; i < latSuperSpec.length; i++) {
+    if (superSpecCase === latSuperSpec[i]) {
+      let mystring = textEl.value;
+      let position = textEl.selectionStart;
+      mystring = mystring.superSpecialReplace(position - 3, kirSuperSpec[i]);
+      textEl.value = mystring;
+      textEl.setSelectionRange(position - 1, position - 1);
+      superSpecCaseUsed = true;
+    }
+  }
 
-  //       mystring = text.value;
-  //       let position = text.selectionStart;
-  //       mystring = mystring.replaceAt(position - 3, kirSuperSpec[i]);
-  //       mystring = mystring.substring(position - 1, position);
-  //       text.value = mystring;
-  //       text.selectionStart = position;
-  //       superSpecCaseUsed = true;
-  //    }
-  //  }
-
-  //  if(!superSpecCaseUsed){
-  //    for(let i = 0; i < latSpec.length; i++){
-  //      if(specCase === latSpec[i]){
-  //       mystring = text.value;
-  //       let position = text.selectionStart;
-  //       mystring = mystring.replaceAt(position - 2, kirSpec[i]);
-  //       text.value = mystring;
-  //       text.selectionStart = position;
-  //        specCaseUsed = true;
-  //      }
-  //    }
-  //  }
+  if (!superSpecCaseUsed) {
+    for (let i = 0; i < latSpec.length; i++) {
+      if (specCase === latSpec[i]) {
+        let mystring = textEl.value;
+        let position = textEl.selectionStart;
+        mystring = mystring.specialReplace(position - 2, kirSpec[i]);
+        textEl.value = mystring;
+        textEl.setSelectionRange(position - 1, position - 1);
+        specCaseUsed = true;
+      }
+    }
+  }
 
 
   if (!specCaseUsed && !superSpecCaseUsed) {
     for (let j = 0; j < latSimple.length; j++) {
       if (key === latSimple[j]) {
-        mystring = text.value;
-        let position = text.selectionStart;
-        mystring = mystring.replaceAt(position - 1, kirSimple[j]);
-        text.selectionStart = position;
-        text.value = mystring;
+        let mystring = textEl.value;
+        let position = textEl.selectionStart;
+        mystring = mystring.simpleReplace(position - 1, kirSimple[j]);
+        textEl.value = mystring;
+        textEl.setSelectionRange(position, position);
       }
     }
   }
