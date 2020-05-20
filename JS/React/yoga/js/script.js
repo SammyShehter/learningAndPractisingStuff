@@ -109,17 +109,17 @@ window.addEventListener('DOMContentLoaded', () => {
 
         let setTimer = setInterval(updateClock, 1000);
 
-        function clockFlashing(){
+        function clockFlashing() {
             hours.textContent = '00';
             minutes.textContent = '00';
-            seconds.textContent = '00';    
+            seconds.textContent = '00';
             setTimeout(() => {
                 hours.textContent = '';
                 minutes.innerHTML = '&#8199;&#8199;';
                 seconds.textContent = '';
-            },800); 
+            }, 800);
         }
-        
+
         function updateClock() {
             let DateDifference = getDateDifference(deadline);
 
@@ -212,134 +212,150 @@ window.addEventListener('DOMContentLoaded', () => {
         let formData = new FormData(form);
 
         let obj = {};
-        
-        formData.forEach( (value, key) => {
+
+        formData.forEach((value, key) => {
             obj[key] = value;
         });
         let json = JSON.stringify(obj)
         request.send(json);
 
 
-        let p = new Promise( (resolve, reject) => {
-            if(request.readyState < 4) {
+        let p = new Promise((resolve, reject) => {
+            if (request.readyState < 4) {
                 resolve();
                 // ;
-            }else if(request.readyState === 4 && request.status === 200){
+            } else if (request.readyState === 4 && request.status === 200) {
                 resolve(message.success);
                 // statusMessage.textContent = message.success;
             } else {
-                reject(new Error (message.failure))
+                reject(new Error(message.failure))
                 // statusMessage.textContent = message.failure;
             }
         });
         const clearInputs = () => {
-            for(let i = 0; i < input.length; i++){
-            input[i].value = '';
+            for (let i = 0; i < input.length; i++) {
+                input[i].value = '';
             }
         }
 
         request.addEventListener('readystatechange', () => {
             p
-                .then( () => {statusMessage.textContent = message.loading})
-                .then( () => {statusMessage.textContent = message.success})
-                .catch( () => {statusMessage.textContent = message.failure})
+                .then(() => {
+                    statusMessage.textContent = message.loading
+                })
+                .then(() => {
+                    statusMessage.textContent = message.success
+                })
+                .catch(() => {
+                    statusMessage.textContent = message.failure
+                })
                 .then(clearInputs);
         });
 
 
-        
+
     });
 
     // Form END
 
     //Slider Module
-    let slideNumber = 0;
-    const slides = document.querySelectorAll('.slider-item');
-    const prev = document.querySelector('.prev');
-    const next = document.querySelector('.next');
-    const dotsWrap = document.querySelector('.slider-dots');
-    const dots = document.querySelectorAll('.dot');
+    function slider(desiredSlideNumber = 0, slide = 'slider-item', prevButton = 'prev', nextButton = 'next', dotsWrapper = 'slider-dots', dot = 'dot') {
+        let slideNumber = desiredSlideNumber;
+        const slides = document.querySelectorAll(`.${slide}`);
+        const prev = document.querySelector(`.${prevButton}`);
+        const next = document.querySelector(`.${nextButton}`);
+        const dotsWrap = document.querySelector(`.${dotsWrapper}`);
+        const dots = document.querySelectorAll(`.${dot}`);
 
-    function sliderCarousel(n) {
-        if(n > slides.length - 1) {
-            n = 0;
-        }
-        if(n < 0) {
-            n = slides.length - 1;
-        }
-
-        slides.forEach((item) => {item.style.display = 'none';});
-        dots.forEach((item) => {item.classList.remove('dot-active');});
-
-        slides[n].style.display = 'block';
-        dots[n].classList.add('dot-active');
-
-        
-        slideNumber = n;
-        
-    }
-    
-
-    function nextSlide(n) {
-        sliderCarousel(slideNumber += n);
-    }
-    function currentSlide(n) {
-        sliderCarousel(slideNumber = n);
-    }
-
-    prev.addEventListener('click', () => {
-        nextSlide(-1);
-    });
-    next.addEventListener('click', () => {
-        nextSlide(1);
-    });
-
-    dotsWrap.addEventListener('click', (event) => {
-        for(let i = 0; i < slides.length; i++){
-            if(event.target == dots[i] && event.target.classList !== 'dot-active'){
-                currentSlide(i);
+        function sliderCarousel(n) {
+            if (n > slides.length - 1) {
+                n = 0;
             }
+            if (n < 0) {
+                n = slides.length - 1;
+            }
+
+            slides.forEach((item) => {
+                item.style.display = 'none';
+            });
+            dots.forEach((item) => {
+                item.classList.remove('dot-active');
+            });
+
+            slides[n].style.display = 'block';
+            dots[n].classList.add('dot-active');
+
+
+            slideNumber = n;
+
         }
-    });
+
+
+        function nextSlide(n) {
+            sliderCarousel(slideNumber += n);
+        }
+
+        function currentSlide(n) {
+            sliderCarousel(slideNumber = n);
+        }
+
+        prev.addEventListener('click', () => {
+            nextSlide(-1);
+        });
+        next.addEventListener('click', () => {
+            nextSlide(1);
+        });
+
+        dotsWrap.addEventListener('click', (event) => {
+            for (let i = 0; i < slides.length; i++) {
+                if (event.target == dots[i] && event.target.classList !== 'dot-active') {
+                    currentSlide(i);
+                }
+            }
+        });
+
+        sliderCarousel(desiredSlideNumber);
+    }
+
 
     //Slider Module END
 
     //Calc SAMMY
-/*
+    /*
 
-    const calc = document.querySelectorAll('.counter-block-input');
-    const baseLocation = document.getElementById('select');
-    const totalPayment = document.getElementById('total');
-    const peopleAmountInp = calc[0];
-    const daysAmountInp = calc[1];
-    
+        const calc = document.querySelectorAll('.counter-block-input');
+        const baseLocation = document.getElementById('select');
+        const totalPayment = document.getElementById('total');
+        const peopleAmountInp = calc[0];
+        const daysAmountInp = calc[1];
+        
 
-    let peopleAmount = 0;
-    let daysAmount = 0;
-    let coefficient = 1;
+        let peopleAmount = 0;
+        let daysAmount = 0;
+        let coefficient = 1;
 
-    peopleAmountInp.addEventListener('input', (e) => {
-        peopleAmount = e.data;
-        overallCalc(peopleAmount, daysAmount, coefficient);
-    });
-    daysAmountInp.addEventListener('input', (e) => {
-        daysAmount = e.data;
-        overallCalc(peopleAmount, daysAmount, coefficient);
-    });
-    baseLocation.addEventListener('change', (e) => {
-        let optionIndex = e.target.selectedIndex;
-        let selectedOption = baseLocation.options[optionIndex];
-        if(selectedOption) {
-            coefficient = selectedOption.value;
+        peopleAmountInp.addEventListener('input', (e) => {
+            peopleAmount = e.data;
+            overallCalc(peopleAmount, daysAmount, coefficient);
+        });
+        daysAmountInp.addEventListener('input', (e) => {
+            daysAmount = e.data;
+            overallCalc(peopleAmount, daysAmount, coefficient);
+        });
+        baseLocation.addEventListener('change', (e) => {
+            let optionIndex = e.target.selectedIndex;
+            let selectedOption = baseLocation.options[optionIndex];
+            if(selectedOption) {
+                coefficient = selectedOption.value;
+            }
+            overallCalc(peopleAmount, daysAmount, coefficient);
+        });
+
+        function overallCalc (a, b, c) {
+            let total = b*500*c*a;
+            totalPayment.textContent = total;
         }
-        overallCalc(peopleAmount, daysAmount, coefficient);
-    });
-
-    function overallCalc (a, b, c) {
-        let total = b*500*c*a;
-        totalPayment.textContent = total;
-    }
-*/
+    */
     //Calc SAMMY END
 
     //Calc
@@ -350,9 +366,9 @@ window.addEventListener('DOMContentLoaded', () => {
 
     // EXECUTABLES
 
-    
+
     //Calling Slider function
-    sliderCarousel(0);
+    slider(0);
 
     //Calling Timer Function
     timerElements('timer', '2020-04-19');
@@ -377,5 +393,5 @@ window.addEventListener('DOMContentLoaded', () => {
 
     //TESTS
     // console.log(this);
-    
+
 });
