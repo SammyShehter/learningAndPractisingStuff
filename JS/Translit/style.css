@@ -1,8 +1,9 @@
 .title {
+    margin-top: 15px;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: lightgoldenrodyellow;
+    background: #fcc883;
   }
 
   .textarea-wrapper {
@@ -12,7 +13,7 @@
     margin-top: 30px;
   }
 
-  textarea {
+  #translit {
     height: 20rem;
     width: 90%;
   }
