@@ -1,0 +1,20 @@
+{
+  "manifest_version": 2,
+  "name": "Transliterat",
+  "version": "1.0",
+
+  "description": "Самый удобный транслитерат",
+  "icons": {
+    "48": "icons/logo_48.png"
+  },
+
+  "permissions": [
+    "activeTab"
+  ],
+
+  "browser_action": {
+    "default_icon": "./icons/logo_48.png",
+    "default_title": "Transliterat",
+    "default_popup": "./popup.html"
+  }
+}

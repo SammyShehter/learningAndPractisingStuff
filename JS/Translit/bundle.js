@@ -1,1 +1,98 @@
-!function(e){var t={};function n(r){if(t[r])return t[r].exports;var o=t[r]={i:r,l:!1,exports:{}};return e[r].call(o.exports,o,o.exports,n),o.l=!0,o.exports}n.m=e,n.c=t,n.d=function(e,t,r){n.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:r})},n.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},n.t=function(e,t){if(1&t&&(e=n(e)),8&t)return e;if(4&t&&"object"==typeof e&&e&&e.__esModule)return e;var r=Object.create(null);if(n.r(r),Object.defineProperty(r,"default",{enumerable:!0,value:e}),2&t&&"string"!=typeof e)for(var o in e)n.d(r,o,function(t){return e[t]}.bind(null,o));return r},n.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return n.d(t,"a",t),t},n.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},n.p="",n(n.s=0)}([function(e,t){const n=["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","'","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z",'"'],r=["а","б","ц","д","е","ф","г","х","и","й","к","л","м","н","о","п","ъ","р","с","т","у","в","щ","х","ы","з","ь","А","Б","Ц","Д","Е","Ф","Г","Х","И","Й","К","Л","М","Н","О","П","Ъ","Р","С","Т","У","В","Щ","Х","Ы","З","Ь"],o=["сh","ыo","зh","цh","ыe","йe","ыa","йa","ыu","йu","йo","Сh","Ыo","Зh","Цh","Ыe","Йe","Ыa","Йa","Ыu","Йu","Йo","СH","ЫO","ЗH","ЦH","ЫE","ЙE","ЫA","ЙA","ЫU","ЙU","ЙO"],u=["ш","ё","ж","ч","э","э","я","я","ю","ю","ё","Ш","Ё","Ж","Ч","Э","Э","Я","Я","Ю","Ю","Ё","Ш","Ё","Ж","Ч","Э","Э","Я","Я","Ю","Ю","Ё"],i=["с-h","ы-o","з-h","ц-h","ы-e","й-e","ы-a","й-a","ы-u","й-u","й-o","С-h","Ы-o","З-h","Ц-h","Ы-e","Й-e","Ы-a","Й-a","Ы-u","Й-u","Й-o","С-H","Ы-O","З-H","Ц-H","Ы-E","Й-E","Ы-A","Й-A","Ы-U","Й-U","Й-O","С_h","Ы_o","З_h","Ц_h","Ы_e","Й_e","Ы_a","Й_a","Ы_u","Й_u","Й_o","С_H","Ы_O","З_H","Ц_H","Ы_E","Й_E","Ы_A","Й_A","Ы_U","Й_U","Й_O"],l=["сх","ыо","зх","цх","ые","йе","ыа","йа","ыу","йу","йо","Сх","Ыо","Зх","Цх","Ые","Йе","Ыа","Йа","Ыу","Йу","Йо","СХ","ЫО","ЗХ","ЦХ","ЫЕ","ЙЕ","ЫА","ЙА","ЫУ","ЙУ","ЙО","Сх","Ыо","Зх","Цх","Ые","Йе","Ыа","Йа","Ыу","Йу","Йо","СХ","ЫО","ЗХ","ЦХ","ЫЕ","ЙЕ","ЫА","ЙА","ЫУ","ЙУ","ЙО"];String.prototype.simpleReplace=function(e,t){return this.substring(0,e)+t+this.substring(e+t.length)},String.prototype.specialReplace=function(e,t){return this.substring(0,e)+t+this.substring(e+t.length+1)},String.prototype.superSpecialReplace=function(e,t){return this.substring(0,e)+t+this.substring(e+t.length+1)};const a=document.getElementById("translit");a.addEventListener("input",e=>{const t=e.data;let s=!1,c=!1,f=a.selectionStart,p=a.value;p=p.substring(f,f-2);let h=a.value;h=h.substring(f,f-3);for(let e=0;e<i.length;e++)if(h===i[e]){let t=a.value,n=a.selectionStart;t=t.superSpecialReplace(n-3,l[e]),a.value=t,a.setSelectionRange(n-1,n-1),c=!0}if(!c)for(let e=0;e<o.length;e++)if(p===o[e]){let t=a.value,n=a.selectionStart;t=t.specialReplace(n-2,u[e]),a.value=t,a.setSelectionRange(n-1,n-1),s=!0}if(!s&&!c)for(let e=0;e<n.length;e++)if(t===n[e]){let t=a.value,n=a.selectionStart;t=t.simpleReplace(n-1,r[e]),a.value=t,a.setSelectionRange(n,n)}})}]);
+const latSimple = [
+  'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', "'",
+  'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '"'
+];
+const kirSimple = [
+  'а', 'б', 'ц', 'д', 'е', 'ф', 'г', 'х', 'и', 'й', 'к', 'л', 'м', 'н', 'о', 'п', 'ъ', 'р', 'с', 'т', 'у', 'в', 'щ', 'х', 'ы', 'з', 'ь',
+  'А', 'Б', 'Ц', 'Д', 'Е', 'Ф', 'Г', 'Х', 'И', 'Й', 'К', 'Л', 'М', 'Н', 'О', 'П', 'Ъ', 'Р', 'С', 'Т', 'У', 'В', 'Щ', 'Х', 'Ы', 'З', 'Ь'
+];
+const latSpec = [
+  'сh', 'ыo', 'зh', 'цh', 'ыe', 'йe', 'ыa', 'йa', 'ыu', 'йu', 'йo',
+  'Сh', 'Ыo', 'Зh', 'Цh', 'Ыe', 'Йe', 'Ыa', 'Йa', 'Ыu', 'Йu', 'Йo',
+  'СH', 'ЫO', 'ЗH', 'ЦH', 'ЫE', 'ЙE', 'ЫA', 'ЙA', 'ЫU', 'ЙU', 'ЙO'
+];
+const kirSpec = [
+  'ш', 'ё', 'ж', 'ч', 'э', 'э', 'я', 'я', 'ю', 'ю', 'ё',
+  'Ш', 'Ё', 'Ж', 'Ч', 'Э', 'Э', 'Я', 'Я', 'Ю', 'Ю', 'Ё',
+  'Ш', 'Ё', 'Ж', 'Ч', 'Э', 'Э', 'Я', 'Я', 'Ю', 'Ю', 'Ё'
+];
+const latSuperSpec = [
+  'с-h', 'ы-o', 'з-h', 'ц-h', 'ы-e', 'й-e', 'ы-a', 'й-a', 'ы-u', 'й-u', 'й-o',
+  'С-h', 'Ы-o', 'З-h', 'Ц-h', 'Ы-e', 'Й-e', 'Ы-a', 'Й-a', 'Ы-u', 'Й-u', 'Й-o',
+  'С-H', 'Ы-O', 'З-H', 'Ц-H', 'Ы-E', 'Й-E', 'Ы-A', 'Й-A', 'Ы-U', 'Й-U', 'Й-O',
+  'С_h', 'Ы_o', 'З_h', 'Ц_h', 'Ы_e', 'Й_e', 'Ы_a', 'Й_a', 'Ы_u', 'Й_u', 'Й_o',
+  'С_H', 'Ы_O', 'З_H', 'Ц_H', 'Ы_E', 'Й_E', 'Ы_A', 'Й_A', 'Ы_U', 'Й_U', 'Й_O'
+];
+const kirSuperSpec = [
+  'сх', 'ыо', 'зх', 'цх', 'ые', 'йе', 'ыа', 'йа', 'ыу', 'йу', 'йо',
+  'Сх', 'Ыо', 'Зх', 'Цх', 'Ые', 'Йе', 'Ыа', 'Йа', 'Ыу', 'Йу', 'Йо',
+  'СХ', 'ЫО', 'ЗХ', 'ЦХ', 'ЫЕ', 'ЙЕ', 'ЫА', 'ЙА', 'ЫУ', 'ЙУ', 'ЙО',
+  'Сх', 'Ыо', 'Зх', 'Цх', 'Ые', 'Йе', 'Ыа', 'Йа', 'Ыу', 'Йу', 'Йо',
+  'СХ', 'ЫО', 'ЗХ', 'ЦХ', 'ЫЕ', 'ЙЕ', 'ЫА', 'ЙА', 'ЫУ', 'ЙУ', 'ЙО'
+];
+
+
+String.prototype.simpleReplace = function (index, char) {
+  return this.substring(0, index) + char + this.substring(index + char.length);
+}
+String.prototype.specialReplace = function (index, char) {
+  return this.substring(0, index) + char + this.substring(index + char.length + 1);
+}
+String.prototype.superSpecialReplace = function (index, char) {
+  return this.substring(0, index) + char + this.substring(index + char.length + 1);
+}
+
+
+const textEl = document.getElementById("translit");
+textEl.addEventListener('input', (event) => {
+
+  const key = event.data;
+  let specCaseUsed = false;
+  let superSpecCaseUsed = false;
+  let position = textEl.selectionStart;
+
+  let specCase = textEl.value;
+  specCase = specCase.substring(position, position - 2);
+
+  let superSpecCase = textEl.value;
+  superSpecCase = superSpecCase.substring(position, position - 3);
+
+
+
+  for (let i = 0; i < latSuperSpec.length; i++) {
+    if (superSpecCase === latSuperSpec[i]) {
+      let mystring = textEl.value;
+      let position = textEl.selectionStart;
+      mystring = mystring.superSpecialReplace(position - 3, kirSuperSpec[i]);
+      textEl.value = mystring;
+      textEl.setSelectionRange(position - 1, position - 1);
+      superSpecCaseUsed = true;
+    }
+  }
+
+  if (!superSpecCaseUsed) {
+    for (let i = 0; i < latSpec.length; i++) {
+      if (specCase === latSpec[i]) {
+        let mystring = textEl.value;
+        let position = textEl.selectionStart;
+        mystring = mystring.specialReplace(position - 2, kirSpec[i]);
+        textEl.value = mystring;
+        textEl.setSelectionRange(position - 1, position - 1);
+        specCaseUsed = true;
+      }
+    }
+  }
+
+
+  if (!specCaseUsed && !superSpecCaseUsed) {
+    for (let j = 0; j < latSimple.length; j++) {
+      if (key === latSimple[j]) {
+        let mystring = textEl.value;
+        let position = textEl.selectionStart;
+        mystring = mystring.simpleReplace(position - 1, kirSimple[j]);
+        textEl.value = mystring;
+        textEl.setSelectionRange(position, position);
+      }
+    }
+  }
+});
