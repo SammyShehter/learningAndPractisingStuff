@@ -67,7 +67,7 @@ function checkID (input) {
                 let i = input.value[j] * 1;
                 if(i >= 10){
                     const arrayOfDigits = Array.from(String(i), Number);
-                    arr.push(arrayOfDigits.reduce((a, b) => a + b, 0));
+                    arr.push(arrayOfDigits.reduce((a, b) => a + b));
                 } else {
                     arr.push(i);
                 }
@@ -76,7 +76,7 @@ function checkID (input) {
                 let i = input.value[j] * 2;
                 if(i >= 10){
                     const arrayOfDigits = Array.from(String(i), Number);
-                    arr.push(arrayOfDigits.reduce((a, b) => a + b, 0));
+                    arr.push(arrayOfDigits.reduce((a, b) => a + b));
                 } else {
                     arr.push(i);
                 }
@@ -84,7 +84,7 @@ function checkID (input) {
         }
         
 
-        let theSum = arr.reduce((a, b) => a + b , 0);
+        let theSum = arr.reduce((a, b) => a + b);
         
         if(theSum/10 % 1 !== 0) {
             showError(input, 'ID is not valid');
