@@ -31,7 +31,11 @@ function checkRequired (inputArray) {
     
     inputArray.forEach(function(input) {
         if(input.value.trim() === '') {
-            showError(input, `${getFieldName(input)} is required`);
+            if(input = password2) {
+                showError(input, '');
+            }else{
+                showError(input, `${getFieldName(input)} is required`);
+            }
         } else {
             showSuccess(input);
         }
@@ -49,36 +53,44 @@ function checkLength (input, min, max = min) {
 }
 
 function checkID (input) {
-    const arr = [];
+    
+    if(input.value.length < 9) {
+        showError(input, `${getFieldName(input)} must be at least 9 characters`);
+    } else if (input.value.length > 10) {
+        showError(input, `${getFieldName(input)} must be at less than 10 characters`);
+    } else {
 
-    for(let j = 0; j < input.value.length; j++) {
-        if(j % 2 == 0){
-            let i = input.value[j] * 1;
-            if(i >= 10){
-                const arrayOfDigits = Array.from(String(i), Number);
-                arr.push(arrayOfDigits.reduce((a, b) => a + b, 0));
+        const arr = [];
+
+        for(let j = 0; j < input.value.length; j++) {
+            if(j % 2 == 0){
+                let i = input.value[j] * 1;
+                if(i >= 10){
+                    const arrayOfDigits = Array.from(String(i), Number);
+                    arr.push(arrayOfDigits.reduce((a, b) => a + b, 0));
+                } else {
+                    arr.push(i);
+                }
+                
             } else {
-                arr.push(i);
-            }
-            
-        } else {
-            let i = input.value[j] * 2;
-            if(i >= 10){
-                const arrayOfDigits = Array.from(String(i), Number);
-                arr.push(arrayOfDigits.reduce((a, b) => a + b, 0));
-            } else {
-                arr.push(i);
+                let i = input.value[j] * 2;
+                if(i >= 10){
+                    const arrayOfDigits = Array.from(String(i), Number);
+                    arr.push(arrayOfDigits.reduce((a, b) => a + b, 0));
+                } else {
+                    arr.push(i);
+                }
             }
         }
-    }
-    
+        
 
-    let theSum = arr.reduce((a, b) => a + b , 0);
-    
-    if(theSum/10 % 1 !== 0) {
-        showError(input, 'ID is not valid');
-    } else {
-        showSuccess(input);
+        let theSum = arr.reduce((a, b) => a + b , 0);
+        
+        if(theSum/10 % 1 !== 0) {
+            showError(input, 'ID is not valid');
+        } else {
+            showSuccess(input);
+        }
     }
 }
 
@@ -96,7 +108,6 @@ form.addEventListener('submit', function(e) {
     e.preventDefault();
     checkRequired([username, id, email, password, password2]);
     checkLength (username, 3, 15);
-    checkLength(id, 9);
     checkID(id);
     checkLength (password, 6, 25);
     checkEmail(email);
