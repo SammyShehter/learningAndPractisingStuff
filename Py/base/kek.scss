@@ -1,0 +1,66 @@
+@mixin baseStick{
+    border-radius:12px;
+    position:absolute;
+    width:10px;
+    height:180px;
+    background:#F3AC3C;
+  }
+
+@mixin stick($rotate, $top, $right){
+    @include baseStick;
+    transform:rotate($rotate);
+    top:$top;
+    right:$right;
+}
+
+@mixin baseSplash{
+    position:absolute;
+    border-radius:50%;
+    background:#998235;
+    z-index:2;
+
+}
+  
+@mixin splash($width, $height, $top, $right){
+    @include baseSplash;
+    width:$width;
+    height:$height;
+    top:$top;
+    right:$right;
+}
+  
+  body{
+    margin:0;
+  }
+  .wrapper{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+    background:#1A4341;
+  }
+  .round {
+    position:relative;
+    width:100px;
+    height:100px;
+    background: #F3AC3C;
+    border-radius:50%;
+  }
+  .splash1{
+    @include splash(30px, 30px, 20px, 50px);
+  }
+  .splash2{
+    @include splash(10px, 10px, 20px, 20px);
+  }
+  .splash3{
+    @include splash(20px, 20px, 65px, 40px);
+  }
+  .stick1{
+    @include stick(0deg, -50px, 45px);
+  }
+  .stick2{
+    @include stick(60deg, -45px, 36px);
+  }
+  .stick3{
+    @include stick(120deg, -35px, 36px);
+  }

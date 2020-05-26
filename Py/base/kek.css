@@ -1,0 +1,78 @@
+body {
+  margin: 0; }
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #1A4341; }
+
+.round {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  background: #F3AC3C;
+  border-radius: 50%; }
+
+.splash1 {
+  position: absolute;
+  border-radius: 50%;
+  background: #998235;
+  z-index: 2;
+  width: 30px;
+  height: 30px;
+  top: 20px;
+  right: 50px; }
+
+.splash2 {
+  position: absolute;
+  border-radius: 50%;
+  background: #998235;
+  z-index: 2;
+  width: 10px;
+  height: 10px;
+  top: 20px;
+  right: 20px; }
+
+.splash3 {
+  position: absolute;
+  border-radius: 50%;
+  background: #998235;
+  z-index: 2;
+  width: 20px;
+  height: 20px;
+  top: 65px;
+  right: 40px; }
+
+.stick1 {
+  border-radius: 12px;
+  position: absolute;
+  width: 10px;
+  height: 180px;
+  background: #F3AC3C;
+  transform: rotate(0deg);
+  top: -50px;
+  right: 45px; }
+
+.stick2 {
+  border-radius: 12px;
+  position: absolute;
+  width: 10px;
+  height: 180px;
+  background: #F3AC3C;
+  transform: rotate(60deg);
+  top: -45px;
+  right: 36px; }
+
+.stick3 {
+  border-radius: 12px;
+  position: absolute;
+  width: 10px;
+  height: 180px;
+  background: #F3AC3C;
+  transform: rotate(120deg);
+  top: -35px;
+  right: 36px; }
+
+/*# sourceMappingURL=kek.css.map */

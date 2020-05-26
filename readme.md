@@ -1,4 +1,4 @@
-Meh... Learnig stuff
+Meh... Learning stuff
 
 |  #  |            Project             | Live Demo |
 | :-: | :----------------------------: | :-------: |

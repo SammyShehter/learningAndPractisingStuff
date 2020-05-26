@@ -1,0 +1,28 @@
+body {
+  margin: 0;
+  background: #293462;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.first {
+  top: 90px;
+  width: 200px;
+  height: 100px;
+  border-radius: 20px;
+  background: #FE5F55;
+  position: absolute;
+  z-index: 2;
+}
+.back {
+  background: #A64942;
+  z-index: 1;
+  top: 110px;
+}
+.second {
+  background: #A64942;
+  top: 120px;
+  width: 140px;
+  height: 40px;
+}
