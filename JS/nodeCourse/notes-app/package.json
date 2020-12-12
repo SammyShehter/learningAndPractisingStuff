@@ -3,14 +3,14 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": { 
+  "scripts": {
     "start": "nodemon app.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "chalk": "^4.1.0",
-    "validator": "^13.1.17",
-    "yargs": "^16.1.1"
+    "validator": "^13.5.2",
+    "yargs": "^16.2.0"
   }
 }
