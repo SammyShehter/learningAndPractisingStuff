@@ -1,0 +1,14 @@
+{
+  "name": "electroproject",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "Sammy Shehter <sammyshehter@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "electron": "^11.1.1"
+  }
+}

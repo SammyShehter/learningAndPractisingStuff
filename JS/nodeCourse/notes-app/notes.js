@@ -18,7 +18,10 @@ const addNote = (props) => {
 
   const duplicateNote = notes.find(note => note.title === title);
 
+
+
   if (duplicateNote) return console.log(chalk.red.inverse('Title is already taken'));
+
 
   notes.push({
     title,
