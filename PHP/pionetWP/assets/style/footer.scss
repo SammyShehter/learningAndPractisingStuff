@@ -1,0 +1,23 @@
+footer{
+    align-items: center;
+    justify-content: space-between;
+    height: 104px;
+    background: #1E1E2A;
+    color:white;
+    padding: 0 4vw;
+    h5{
+        font-weight: 400;
+    }
+    
+
+    .footerRight{
+        width: 12vw;
+        justify-content: space-between;
+
+        img{
+            height: 25px;
+            padding-bottom: 6px;
+        }
+        
+    }
+}

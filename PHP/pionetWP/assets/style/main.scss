@@ -1,0 +1,12 @@
+@import './resetAndNorm';
+@import './lib';
+@import './header';
+@import './body';
+@import './footer';
+
+//Font
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@400;700&display=swap');
+
+body{
+    font-family: 'Heebo', sans-serif;
+}

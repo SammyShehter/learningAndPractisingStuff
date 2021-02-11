@@ -1,0 +1,270 @@
+//Img Animation
+.imgAnim {
+    position: absolute;
+    z-index: 5;
+    top: 500px;
+    left: 250px;
+
+
+    &__big {
+        position: absolute;
+        height: 927px;
+        width: 932px;
+        animation: spinR 10s linear infinite;
+    }
+
+    &__mid {
+        position: absolute;
+        height: 627px;
+        width: 632px;
+        animation: spinL 15s linear infinite;
+    }
+
+    &__lit {
+        position: absolute;
+        height: 377px;
+        width: 382px;
+        animation: spinR 25s linear infinite;
+    }
+
+    @keyframes spinR {
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    @keyframes spinL {
+        100% {
+            transform: rotate(-360deg);
+        }
+    }
+
+    &__text {
+        font-size: 2rem;
+        color: $white;
+        width: 21vh;
+        height: 21vh;
+        border: 5px solid $text;
+        border-radius: 50%;
+    }
+}
+
+//Img Animation END
+
+//Section 1
+.sec1 {
+    z-index: 2;
+    position: relative;
+    height: 970px;
+    background: url('../img/banner.png') no-repeat center center;
+    background-size: cover;
+    overflow: hidden;
+
+    &__wrapper {
+        .menu {
+            padding: 2vh 7vw 0 0;
+            justify-content: flex-end;
+
+            &__inner {
+                color: $white;
+                width: 30vw;
+                height: 10vh;
+                align-items: center;
+                justify-content: space-between;
+                flex-direction: row-reverse;
+
+                h2,h4{
+                    cursor: pointer;
+                }
+            }
+        }
+
+        .descAndCont {
+            &__desc {
+                width: 45%;
+
+            }
+
+            &__cont {
+                width: 55%;
+                color: $white;
+                padding: 20vh 7vw;
+
+                h2,h4 {
+                    padding-bottom: 5vh;
+                }
+
+                button {
+                    padding: 1.5vh 3vw;
+                    border: 0;
+                    color: $white;
+                    background: $text;
+                    font-weight: bold;
+
+                    &:hover {
+                        background: #00C2E3;
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+//Section 1 END
+
+//Section 2
+.sec2 {
+
+    background: #F4F4F4;
+
+    &__heading {
+        padding-top: 12vh;
+        color: $text;
+        font-weight: bold;
+    }
+
+
+    &__postsWrapper {
+
+        .LR_Button {
+            width: 80px;
+            border: 2px solid black;
+            border-radius: 50%;
+            height: 80px;
+
+            &:hover {
+                border: 2px solid $text;
+                background: $text;
+                cursor: pointer;
+
+                img {
+                    filter: invert(98%) sepia(2%) saturate(296%) hue-rotate(292deg) brightness(117%) contrast(100%);
+                }
+
+            }
+
+            img {
+                width: 30px;
+            }
+        }
+
+        .carousel {
+            width: 80vw;
+            justify-content: space-evenly;
+            padding: 5vh 0 8vh;
+
+            .post {
+                background: $white;
+                flex-direction: column;
+                align-items: center;
+                height: 467px;
+                width: 370px;
+                @include fancyBorderBox;
+                padding-top: 3vh;
+
+                &__image {
+                    height: 12vh;
+                    width: 12vh;
+                    border: solid 3px $white;
+
+                    &:hover {
+                        border: solid 3px $text;
+                        border-radius: 50%;
+                    }
+
+                    img {
+                        height: 60px;
+                        width: auto;
+                    }
+                }
+
+                &__title {
+                    padding-top: 2vh;
+                }
+
+                &__content {
+                    flex-direction: column;
+                    height: 22vh;
+
+                    p+p {
+                        padding-top: 1.5vh;
+                    }
+                }
+
+                a {
+                    padding-top: 35px;
+                    color: #003F8A;
+                    font-weight: 700;
+                }
+            }
+        }
+    }
+
+}
+
+//Section 2 END
+
+//Section 3
+.sec3 {
+    background: $text;
+
+    &__wrapper {
+        display: flex;
+
+        .leftSide {
+            padding-top: 217px;
+            color: $white;
+            width: 45%;
+
+            &__goodStuff {
+                padding-top: 80px;
+
+                h4 {
+                    font-weight: 400;
+                    font-size: 22px;
+                }
+            }
+        }
+
+        .rightSide {
+            width: 55%;
+            height: 715px;
+            background: url('../img/WHY\ US\ CUT.png');
+        }
+    }
+}
+
+//Section 3 END
+
+//Section 4
+.sec4 {
+    background: #F4F4F4;
+    height: 384px;
+
+    &__heading {
+        padding: 50px 0 77px 0;
+        text-align: center;
+        color: $text;
+    }
+
+    &__clients {
+        align-items: center;
+        justify-content: space-evenly;
+
+        div {
+            background: $white;
+            @include fancyBorderBox;
+            height: 150px;
+            width: 150px;
+
+            img {
+                width: 130px;
+                height: auto;
+            }
+        }
+
+    }
+}
+
+//Section 4 END

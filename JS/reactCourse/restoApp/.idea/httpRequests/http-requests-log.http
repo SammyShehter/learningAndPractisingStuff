@@ -1,0 +1,7 @@
+GET http://localhost:3000/menu
+Accept: application/json
+
+<> 2020-12-04T170113.200.json
+
+###
+

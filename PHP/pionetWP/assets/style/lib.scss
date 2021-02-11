@@ -1,0 +1,61 @@
+//Vars
+$text:#06AAE2;
+$white: #fff;
+//Vars END
+
+//@mixins
+@mixin fancyBorderBox {
+  box-shadow: 0px 3px 6px #00000028;
+}
+//@mixins END
+
+.container-fluid, .container-sm, .container-md, .container-lg, .container-xl {
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.flex{
+  display: flex;
+}
+.row {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.flex-center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.max-height{
+  height: 100%;
+}
+.img-fluid{
+  max-width:100%;
+  height:auto;
+  display:block;
+}
+//my Own preference
+a{
+  text-decoration: none;
+}
+h2{
+  font-size:50px;
+  letter-spacing: 2px;
+}
+h3{
+  font-size: 25px;
+}
+h4{
+  font-size: 20px;
+  line-height: 1.4;
+}
+h5{
+  font-size: 18px;
+}
+p{
+  font-size: 18px;
+}
