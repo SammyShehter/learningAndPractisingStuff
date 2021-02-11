@@ -1,0 +1,46 @@
+@import './resetAndNorm';
+@import './mediaQuery';
+
+// COLORS
+$text: #001348;
+$color1: #00D3FF;
+// COLORS END
+
+.container-fluid, .container-sm, .container-md, .container-lg, .container-xl {
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.flex{
+  display: flex;
+}
+.row {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.flex-center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.column{
+  display: flex;
+  flex-direction: column;
+}
+.max-height{
+  height: 100%;
+}
+.img-fluid{
+  max-width:100%;
+  height:auto;
+  display:block;
+}
+//my Own preference
+a{
+  text-decoration: none;
+}

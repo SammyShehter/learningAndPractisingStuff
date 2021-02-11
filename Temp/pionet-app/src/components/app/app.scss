@@ -1,0 +1,46 @@
+@import '../scss_my_lib/lib';
+@import url('https://fonts.googleapis.com/css2?family=Assistant&display=swap');
+@import '../containerForm/contForm';
+@import '../header/header';
+
+
+
+body{
+    margin: 0 auto;
+    width:75vw;
+
+    font-family: 'Assistant', sans-serif;
+    background-image: url('../materials/Rectangle\ 125.svg'), url('../materials/Mask\ Group\ 1.png');
+    background-position: top bottom, top bottom;
+    background-repeat: no-repeat, no-repeat;
+
+    .welcomeBan{
+        margin:4vh auto;
+        width: 40vw;
+        flex-direction: column;
+        place-items: center;
+
+        h3{
+            font-size:1.3rem;
+            font-weight: 300;
+        }
+        h2{
+            padding: 2vh;
+            font-size:3rem;
+            font-weight: 600;
+            &:after{
+                content: ""; 
+                display: block; 
+                margin: 0 auto;
+                width: 30%;
+                padding-top: 2vh;
+                border-bottom: 1px solid $color1;
+            }
+        }
+        p{
+            text-align: center;
+            line-height: 2.5vh;
+        }
+    }
+
+}

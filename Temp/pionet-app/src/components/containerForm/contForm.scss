@@ -1,0 +1,89 @@
+.boxes{
+    margin-top:49vh;
+    justify-content: space-evenly;
+
+    &__inst{
+        background:white;
+        box-shadow: 2px 2px 13px #00000066;
+        .iconInBox{
+            background: $color1 0% 0% no-repeat padding-box;
+            font-size: xx-large;
+            border:0;
+            outline:0;
+        }
+        .textInBox{
+            color: $text;
+            padding: 2.5vh 3vw;
+            font-size: 14px;
+        }
+    }
+
+    &__main{
+        background:#001348;
+        .textInBox{
+            color:white;
+        }
+        .inputInBox{
+            background:#001348;
+            color:white;
+            border:0;
+            padding: 2vh;
+            &:focus{
+                outline:0;
+            }
+        }
+    }
+}
+
+.infoBox{
+    flex-direction: row-reverse;
+    box-shadow: 0px 3px 6px #00000029;
+    background:white;
+    padding: 2vh 3vw;
+
+    &__inst{
+        padding:2vw;
+
+        p{
+            text-align: end;
+            color:$text;
+            width: 20vw;
+            padding: 2vh;
+            border-bottom: 1px solid $color1;
+
+            span{
+                padding: 0 2vw;
+                color:$color1;
+            }
+        }
+    }
+}
+
+
+.phoneNum{
+    margin: auto auto 2vw 0;
+    &__form{
+        width:10vw;
+        flex-direction: column;
+
+        p{
+            margin-bottom: 1vh;
+        }
+
+        input{
+            border: 1px solid #001348;
+            padding:1.5vh;
+            margin-bottom: 1vh;
+        }
+
+        button{
+            padding:1.5vh;
+            border:0;
+            color:$text;
+            background:#FEDF47;
+        }
+    }
+}
+
+
+

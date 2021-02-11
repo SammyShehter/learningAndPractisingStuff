@@ -1,0 +1,57 @@
+.navigation {
+    margin-top: 15vh;
+    border-bottom: white solid 2px;
+    justify-content: space-around;
+
+    ul {
+        padding: 1vh 3vw 1vh 3vw;
+
+        li {
+
+            a {
+                padding: 0 3vw 0 3vw;
+                font-size: 1.5rem;
+                color: white;
+            }
+
+            &.dropdown {
+                position: relative;
+
+                .submenu {
+                    display: none;
+                }
+
+                &:hover,
+                &:focus-within {
+                    .submenu {
+                        position: absolute;
+                        left: 0;
+                        display: block;
+                        padding: 1vh 0;
+                        width: 100%;
+                            a {
+                                background-color: $text;
+                                padding: 2vh 0;
+                                text-align: center;
+                                display: block;
+                                font-size: 1rem;
+
+                                &:hover {
+                                    color: $text;
+                                    background: #FEDF47;
+                                }
+                            }
+                    }
+                }
+            }
+
+
+
+        }
+
+        .selected {
+            font-weight: bold;
+            border-bottom: white 5px solid;
+        }
+    }
+}
