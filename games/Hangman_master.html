@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Remastering Hangman</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+</head>
+<body>
+  <canvas id="canvas" width="1920" height="1080"></canvas>
+<script async>
+//Canvas stuff(Drawing a hangman and putting him into a function) - Open with firefox to see  
+var canvas = document.getElementById("canvas");
+  var ctx = canvas.getContext("2d");
+  ctx.lineWidth = 4;
+
+var hangmanDrawFunc = function(a,b,c,d){
+  ctx.beginPath();
+  ctx.moveTo(a, b);
+  ctx.lineTo(c, d);
+  ctx.stroke();
+}
+
+var drawingHangman = function(guesses){ 
+  var j = guesses;
+    if( j === 1 ){
+      hangmanDrawFunc(130,220,190,220);
+    }
+    if( j === 2 ){
+      hangmanDrawFunc(160, 220, 160, 90);
+    }
+    if( j === 3 ){
+      hangmanDrawFunc(145, 92, 160, 105);
+    }
+    if( j === 4 ){
+      hangmanDrawFunc(160, 92, 120, 92);
+    }
+    if( j === 5 ){
+      hangmanDrawFunc(120, 90, 120, 110);
+    }
+    if( j === 6 ){
+      ctx.beginPath();
+      ctx.arc(120, 120, 10, 0, Math.PI * 2, false);
+      ctx.stroke();
+    }
+    if( j === 7 ){
+      hangmanDrawFunc(120, 130, 120, 160);
+    }
+    if( j === 8 ){
+      hangmanDrawFunc(105, 135, 120, 140);
+      hangmanDrawFunc(120, 140, 135, 135);
+    }
+    if( j === 9 ){
+      hangmanDrawFunc(105, 180, 120, 160);
+    }
+    if( j === 10 ){
+      hangmanDrawFunc(120, 160, 135, 180);
+    }
+    
+}  
+
+//defining random word
+function pickWord(){
+  words = ["floor", "cat"];
+  return words[Math.floor(Math.random()*words.length)];
+}
+
+//turning randomly selected word into underlines
+function setupAnswerArray(word){
+  answerArray = [];
+  for( var i = 0; i < word.length; i++){
+    answerArray[i] = "_";
+  }
+  return answerArray;
+}
+
+// Setting up Player's progress
+function showPlayerProgress(answerArray){
+  answerArray = answerArray.join(" ");
+  return alert(answerArray);
+}
+
+
+//Guessing the letter
+function getGuess(){
+  var guess = prompt("Please enter the letter or cancel to exit");
+  return guess;
+}
+
+//updating Game State
+function updateGameState(guess, word, answerArray){
+  appereances = 0;
+  for( var i = 0; i < word.length; i++){
+    if(word[i] == guess && answerArray[i] == "_"){
+      answerArray[i] = guess;
+      appereances++;
+    }
+  }
+  return appereances;
+}
+
+//end of the game
+function showAnswerAndCongratulatePlayer(guesses, answerArray){
+  if(guesses == 10){
+    return alert("Game Over!");
+  }
+  if(remainingLetters == 0){
+    return alert("Congratulations! The word is " + answerArray.join(""));
+  }
+}
+guesses = 0;
+word = pickWord(); //selecting random word
+remainingLetters = word.length; //remaining letters
+answerArray = setupAnswerArray(word); //setting up the word for while loop
+
+//game loop
+while(remainingLetters > 0 && guesses !== 10){
+  showPlayerProgress(answerArray);
+  var guess = getGuess();
+  if (guess === null){
+    break;
+  } else if (guess.length !== 1){
+    alert("Please enter only one letter");
+  } else {
+    var correctGuesses = updateGameState(guess, word, answerArray);
+    if(correctGuesses == 0){
+      guesses++;
+    }
+    drawingHangman(guesses)
+    remainingLetters -= correctGuesses;
+  }
+}
+
+//Start over
+showAnswerAndCongratulatePlayer(guesses, answerArray);  
+var gameloop = confirm("Want to start over?");
+  if(gameloop){
+    document.location.reload(true)
+  }else{
+    alert("Bye!");
+  }
+  
+  
+
+</script>
+</body>
+</html>

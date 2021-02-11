@@ -1,0 +1,61 @@
+.appListItem {
+    font-size: 1.25rem;
+
+    button{
+      width: 35px;
+      height: 35px;
+      margin: 3px;
+      font-size: 17px;
+      border: none;
+      cursor: pointer;
+
+      &:focus{
+        box-shadow: none;
+        outline: none;
+      }
+    }
+
+    .btnStar{
+      color: #FFD700;
+    }
+
+    .btnTrash {
+      color: red;
+    }
+
+    .fa-heart {
+      width: 35px;
+      height: 35px;
+      text-align: center;
+      line-height: 35px;
+      font-size: 16px;
+      color: red;
+      transition: 0.3s all;
+      transform: translateX(30px);
+      opacity: 0;
+    }
+
+  .appListItemLabel {
+    display: block;
+    line-height: 35px;
+    cursor: pointer;
+    user-select: none;
+    transition: 0.5s all;
+  }
+  
+  &.liked .fa-heart {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+
+  &.important{
+    .appListItemLabel {
+      color: #FFD700;
+    }
+
+    .btnStar {
+      color: #aeaeae;
+    }
+  }
+}
+

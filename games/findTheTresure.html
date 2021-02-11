@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>אוצר</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <style>
+    body{
+      display:flex;
+    }
+    .flexBox{
+      display:flex;
+      height: 350px;
+      width: 350px;
+      justify-content: space-around;
+    }
+  </style>
+</head>
+<body>
+<img id="map" height="400" width="600" src="http://www.aljanh.net/data/archive/img/2310463560.jpeg">
+<div class="flexBox">
+  <h3 id="distance"></h3>
+  <h3 id="clicksLeft"></h3>
+</div>
+<script>
+
+
+  var randNum = function(num){
+    return Math.floor(Math.random()*num);
+  }
+
+
+  var findDistance = function(event,target){
+    diffX = event.offsetX - target.x;
+    diffY = event.offsetY - target.y;
+    return Math.sqrt((diffX*diffX)+(diffY*diffY));
+  };
+
+  var hintAl = function(distance){
+    if(distance < 10){
+      return "חם מאוד!";
+    }else if(distance < 30){
+      return "חם...";
+    }else if(distance < 70){
+      return "קצת חם";
+    }else if(distance < 100){
+      return "קריר";
+    }else if(distance < 150){
+      return "קר";
+    }else{
+      return "בכלל לא";
+    }
+  };
+
+  var width = 600;
+  var height = 400;
+  var clicks = 0;
+  var clicksLeft = 20;
+
+  var target = {
+    x : randNum(width),
+    y : randNum(height)
+  }
+
+  $("#map").click(function(event){
+    clicks++;
+    clicksLeft--;
+
+    $("#clicksLeft").text("נשאר " + clicksLeft + " קליקים");
+
+    var distance = findDistance(event,target);
+
+    var hint = hintAl(distance);
+
+    $("#distance").text(hint);
+
+    if(distance < 6){
+      alert("יפה מאוד! " + "מצאת את אוצר ב " + clicks + " קליקים")
+      var gameloop = confirm("רוצה להתחיל מחדש?");
+        if(gameloop){
+          document.location.reload(true)
+        }else{
+          alert("ביי!");
+        }
+    }
+    if(clicksLeft == 0){
+      alert("Game Over!");
+            var gameloop = confirm("רוצה להתחיל מחדש?");
+        if(gameloop){
+          document.location.reload(true)
+        }else{
+          alert("ביי!");
+        }
+    }
+  })
+ //DIMA SMOTRI
+</script>
+</body>
+</html>

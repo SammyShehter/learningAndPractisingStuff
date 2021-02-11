@@ -1,0 +1,24 @@
+@import './myLib/lib';
+@import 'components/app/app';
+@import 'components/appHeader/appHeader';
+@import 'components/postAddForm/postAddForm';
+@import 'components/postList/postList';
+@import 'components/postListItem/postListItem';
+@import 'components/postStatusFilter/postStatusFilter';
+@import 'components/searchPanel/searchPanel';
+
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}

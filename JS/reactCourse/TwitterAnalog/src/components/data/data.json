@@ -1,0 +1,19 @@
+[{
+        "label": "First post",
+        "important": false,
+        "liked": false,
+        "id": "lol"
+    },
+    {
+        "label": "Second Post",
+        "important": false,
+        "liked": false,
+        "id": "lol1"
+    },
+    {
+        "label": "Third Post",
+        "important": false,
+        "liked": false,
+        "id": "lol2"
+    }
+]
