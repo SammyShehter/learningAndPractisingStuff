@@ -25,11 +25,11 @@ class UsersDao {
         return user.id
     }
 
-    async getUSers() {
+    async getUsers() {
         return this.users
     }
 
-    async getUsersById(userId: string) {
+    async getUserById(userId: string) {
         return this.users.find((user: { id: string }) => user.id === userId)
     }
 
@@ -39,7 +39,7 @@ class UsersDao {
         return `${user.id} updated via put`
     }
 
-    async patchById(user: UserDto) {
+    async patchUserById(user: UserDto) {
         const objIndex = this.users.findIndex((obj: { id: string }) => obj.id === user.id)
         let currentUser = this.users[objIndex]
         const allowedPatchFields = ['password', 'firstName', 'lastName', 'premissionLevel']
@@ -59,6 +59,17 @@ class UsersDao {
         return `${userId} removed`
     }
 
+    async getUserByEmail(email: string) {
+        const objIndex = this.users.findIndex((obj: { email: string }) => obj.email === email)
+
+        let currentUser = this.users[objIndex]
+
+        if(currentUser) {
+            return currentUser
+        } else {
+            return null
+        }
+    }
 
 
 }
