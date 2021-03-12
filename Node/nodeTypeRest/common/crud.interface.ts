@@ -5,5 +5,5 @@ export interface CRUD {
     readById: (resourceId: any) => Promise<any>
     deleteById: (resourceId: any) => Promise<string>
     patchById: (resourceId: any) => Promise<string>
-    getUserByEmail: (email: string) => Promise<any>
+    getByEmail: (email: string) => Promise<any>
 }
