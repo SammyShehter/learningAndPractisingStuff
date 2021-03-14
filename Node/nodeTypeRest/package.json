@@ -2,12 +2,10 @@
   "name": "nodetyperest",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.ts",
   "scripts": {
-    "start": "tsc && nodemon ./dist/app.js",
-    "debug": "export DEBUG=* && npm run start",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "export DEBUG=* && nodemon --config nodemon.json app.ts"
+    "start": "tsc && node ./dist/app.js",
+    "debug": "export DEBUG=* && nodemon --config nodemon.json"
   },
   "author": "",
   "license": "ISC",
