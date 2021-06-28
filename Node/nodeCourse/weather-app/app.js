@@ -7,3 +7,4 @@ request.get({ url, json: true }, (error, response) => {
     const {temperature, feelslike} = response.body.current
     console.log(`It's ${temperature} degrees outside, but feels like ${feelslike} degrees`)
 })
+  

@@ -1,4 +1,4 @@
-import.random
+import random
 theNumber = random.randint(1,20)
 guesses = 0
 print('\'Guess the number\' welcomes you stranger')

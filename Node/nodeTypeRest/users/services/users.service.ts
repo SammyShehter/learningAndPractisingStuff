@@ -1,8 +1,9 @@
 import UsersDao from '../daos/users.dao';
-import {CRUD} from '../../common/crud.interface';
-import {UserDto} from '../dto/users.model';
+import {CRUD} from "../../common/interfaces/crud.interface";
+import {UserDto} from "../dto/user.dto";
 
-class UsersService implements CRUD{
+class UsersService implements CRUD {
+
     async create(resource: UserDto) {
         return UsersDao.addUser(resource);
     }
@@ -27,9 +28,9 @@ class UsersService implements CRUD{
         return UsersDao.putUserById(resource);
     };
 
-    async getByEmail(email: string) {
+    async getUserByEmail(email: string) {
         return UsersDao.getUserByEmail(email);
     }
 }
 
-export default new UsersService()
+export default new UsersService();
